@@ -6,9 +6,9 @@ import { ArticleModule } from './article/article.module';
 import { FamilyModule } from './family/family.module';
 import { DatabaseModule } from './database/database.module';
 import configuration from './config/configuration';
-import { databaseProviders } from './mysql/mysql';
 import { ProviderModule } from './provider/provider.module';
 import { OrderStatusModule } from './order-status/order-status.module';
+import { databaseProviders } from './config/mysql/mysql';
 
 @Module({
   imports: [

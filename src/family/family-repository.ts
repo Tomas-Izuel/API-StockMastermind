@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFamilyDto } from './dto/create-family.dto';
 import { Family } from './entities/family.entity';
+import { Article } from 'src/article/entities/article.entity';
 
 @Injectable()
 export class FamilyRepository {
@@ -30,6 +31,10 @@ export class FamilyRepository {
   }
 
   async remove(id: number) {
+    const article = await Article.findOne({ where: { family_id: id } });
+    if (article) {
+      return 'Family has articles, not deleted';
+    }
     const family = await Family.findByPk(id);
     if (!family) {
       return 'Family not found';
