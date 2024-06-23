@@ -1,15 +1,12 @@
-const config = {
-  MYSQLDATABASE: process.env.MYSQLDATABASE,
+export default () => ({
+  port: parseInt(process.env.PORT, 10) || 3000,
+  MYSQLDATABASE: process.env.MYSQL_DATABASE,
   MYSQLHOST: process.env.MYSQLHOST,
-  MYSQLPASSWORD: process.env.MYSQLPASSWORD,
-  MYSQLPORT: Number(process.env.MYSQLPORT),
+  MYSQLPORT: parseInt(process.env.MYSQLPORT, 10) || 5432,
   MYSQLUSER: process.env.MYSQLUSER,
+  MYSQLPASSWORD: process.env.MYSQLPASSWORD,
   MYSQL_DATABASE: process.env.MYSQL_DATABASE,
   MYSQL_PRIVATE_URL: process.env.MYSQL_PRIVATE_URL,
   MYSQL_ROOT_PASSWORD: process.env.MYSQL_ROOT_PASSWORD,
   MYSQL_URL: process.env.MYSQL_URL,
-  PORT: process.env.PORT,
-  DIALECT: process.env.DIALECT,
-};
-
-export default config;
+});
