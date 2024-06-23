@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Article } from './article';
+import { Article } from './article-repository';
 
 describe('Article', () => {
   let provider: Article;

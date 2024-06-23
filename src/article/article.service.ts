@@ -1,26 +1,28 @@
 import { Injectable } from '@nestjs/common';
+import { ArticleRepository } from './article-repository';
 import { CreateArticleDto } from './dto/create-article.dto';
-import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticleService {
+  articleRepository = new ArticleRepository();
+
   create(createArticleDto: CreateArticleDto) {
-    return 'This action adds a new article';
+    return this.articleRepository.create(createArticleDto);
   }
 
   findAll() {
-    return `This action returns all article`;
+    return this.articleRepository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} article`;
+    return this.articleRepository.findOne(id);
   }
 
-  update(id: number, updateArticleDto: UpdateArticleDto) {
-    return `This action updates a #${id} article`;
+  update(id: number, updateArticleDto) {
+    return this.articleRepository.update(id, updateArticleDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} article`;
+    return this.articleRepository.remove(id);
   }
 }

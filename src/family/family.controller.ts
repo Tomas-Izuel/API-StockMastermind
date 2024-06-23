@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { FamilyService } from './family.service';
 import { CreateFamilyDto } from './dto/create-family.dto';
-import { UpdateFamilyDto } from './dto/update-family.dto';
 
 @Controller('family')
 export class FamilyController {
@@ -18,17 +26,20 @@ export class FamilyController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.familyService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.familyService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFamilyDto: UpdateFamilyDto) {
-    return this.familyService.update(+id, updateFamilyDto);
+  @Put(':id')
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateFamilyDto: CreateFamilyDto,
+  ) {
+    return this.familyService.update(id, updateFamilyDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.familyService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.familyService.remove(id);
   }
 }

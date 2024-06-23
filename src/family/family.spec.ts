@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Family } from './family';
+import { Family } from './family-repository';
 
 describe('Family', () => {
   let provider: Family;

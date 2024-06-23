@@ -1,1 +1,3 @@
-export class CreateFamilyDto {}
+export interface CreateFamilyDto {
+  name: string;
+}

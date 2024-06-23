@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFamilyDto } from './dto/create-family.dto';
-import { UpdateFamilyDto } from './dto/update-family.dto';
+import { FamilyRepository } from './family-repository';
 
 @Injectable()
 export class FamilyService {
+  familyRepository = new FamilyRepository();
   create(createFamilyDto: CreateFamilyDto) {
-    return 'This action adds a new family';
+    return this.familyRepository.create(createFamilyDto);
   }
 
   findAll() {
-    return `This action returns all family`;
+    return this.familyRepository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} family`;
+    return this.familyRepository.findOne(id);
   }
 
-  update(id: number, updateFamilyDto: UpdateFamilyDto) {
-    return `This action updates a #${id} family`;
+  update(id: number, updateFamilyDto: CreateFamilyDto) {
+    return this.familyRepository.update(id, updateFamilyDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} family`;
+    return this.familyRepository.remove(id);
   }
 }

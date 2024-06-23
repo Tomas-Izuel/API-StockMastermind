@@ -14,7 +14,7 @@ import { Optional } from 'sequelize';
 import { Family, FamilyAtributes } from 'src/family/entities/family.entity';
 
 export interface ArticleAtributes extends GeneralAtributes {
-  code: number;
+  id: number;
   name: string;
   model: string;
   description: string;
@@ -27,7 +27,7 @@ export interface ArticleAtributes extends GeneralAtributes {
 interface ArticleCreationAttributes
   extends Optional<
     ArticleAtributes,
-    'code' | 'created_at' | 'updated_at' | 'deleted_at'
+    'id' | 'created_at' | 'updated_at' | 'deleted_at'
   > {}
 
 @Table({
