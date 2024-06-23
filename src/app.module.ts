@@ -6,7 +6,7 @@ import { ArticleModule } from './article/article.module';
 import { FamilyModule } from './family/family.module';
 import { DatabaseModule } from './database/database.module';
 import configuration from './config/configuration';
-import { databaseProviders } from './mysql/mysql';
+import { databaseProviders } from './config/mysql/mysql';
 
 @Module({
   imports: [
