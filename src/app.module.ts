@@ -3,9 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { OrderStatusModule } from './order-status/order-status.module';
+import { ProviderModule } from './provider/provider.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), OrderStatusModule],
+  imports: [ConfigModule.forRoot(), OrderStatusModule, ProviderModule],
   controllers: [AppController],
   providers: [AppService],
 })

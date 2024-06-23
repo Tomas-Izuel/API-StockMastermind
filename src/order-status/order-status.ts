@@ -8,7 +8,7 @@ export class OrderStatusRepository {
   constructor() {}
   async createOrderStatus(createOrderStatusDto: CreateOrderStatusDto) {
     OrderStatus.create({
-      name: createOrderStatusDto.name,
+      ...createOrderStatusDto,
       is_default: createOrderStatusDto.is_default || false,
     });
   }
