@@ -39,6 +39,6 @@ export class OrderStatusService {
   }
 
   async remove(id: number) {
-    return this.orderStatusRepository.delete(id);
+    return this.orderStatusRepository.remove(id);
   }
 }

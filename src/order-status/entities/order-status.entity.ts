@@ -1,4 +1,4 @@
-import { Model } from 'sequelize';
+import { Optional } from 'sequelize';
 import {
   AllowNull,
   AutoIncrement,
@@ -7,10 +7,33 @@ import {
   DataType,
   DeletedAt,
   PrimaryKey,
+  Table,
   UpdatedAt,
+  Model,
 } from 'sequelize-typescript';
+import GeneralAttributes from 'src/dtos/general';
 
-export class OrderStatus extends Model {
+export interface OrderStatusAttributes extends GeneralAttributes {
+  id: number;
+  name: string;
+  is_default?: boolean;
+}
+
+export interface OrderStatusCreationAttributes
+  extends Optional<
+    OrderStatusAttributes,
+    'id' | 'created_at' | 'updated_at' | 'deleted_at'
+  > {}
+
+@Table({
+  tableName: 'order_status',
+  timestamps: true,
+  paranoid: true,
+})
+export class OrderStatus extends Model<
+  OrderStatusAttributes,
+  OrderStatusCreationAttributes
+> {
   @Column(DataType.STRING)
   name: string;
   @PrimaryKey

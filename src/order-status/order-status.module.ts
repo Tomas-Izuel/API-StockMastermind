@@ -6,5 +6,6 @@ import { OrderStatusRepository } from './order-status';
 @Module({
   controllers: [OrderStatusController],
   providers: [OrderStatusService, OrderStatusRepository],
+  exports: [OrderStatusService],
 })
 export class OrderStatusModule {}

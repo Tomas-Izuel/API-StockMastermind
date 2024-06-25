@@ -11,6 +11,7 @@ import {
 import { ProviderService } from './provider.service';
 import { CreateProviderDto } from './dto/create-provider.dto';
 import { UpdateProviderDto } from './dto/update-provider.dto';
+import { CreateProviderArticleDto } from 'src/provider-article/dto/create-provider-article.dto';
 
 @Controller('provider')
 export class ProviderController {
@@ -42,5 +43,18 @@ export class ProviderController {
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.providerService.remove(+id);
+  }
+
+  @Get(':id/articles')
+  getArticles(@Param('id', ParseIntPipe) id: number) {
+    return this.providerService.getArticles(+id);
+  }
+
+  @Post(':id/add-articles')
+  addArticle(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() data: CreateProviderArticleDto[],
+  ) {
+    return this.providerService.addManyArticles(+id, data);
   }
 }

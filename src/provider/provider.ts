@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Provider } from './entities/provider.entity';
 import { CreateProviderDto } from './dto/create-provider.dto';
+import { UpdateProviderDto } from './dto/update-provider.dto';
+import { ProviderArticle } from 'src/provider-article/entities/provider-article.entity';
 
 @Injectable()
 export class ProviderRepository {
@@ -17,14 +19,28 @@ export class ProviderRepository {
   }
 
   async findOne(id: number) {
-    return Provider.findByPk(id);
+    return Provider.findByPk(id, {
+      include: {
+        model: ProviderArticle,
+        attributes: [
+          'id',
+          'sale_price',
+          'security_stock',
+          'article_id',
+          'max_stock',
+          'request_stock',
+        ],
+      },
+    });
   }
 
   async findDefault() {
-    return Provider.findOne({ where: { is_default: true } });
+    return Provider.findOne({
+      where: { is_default: true },
+    });
   }
 
-  async update(id: number, updateProviderDto: CreateProviderDto) {
+  async update(id: number, updateProviderDto: UpdateProviderDto) {
     return Provider.update(updateProviderDto, { where: { id } });
   }
 

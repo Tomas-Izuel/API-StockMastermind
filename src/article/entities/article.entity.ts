@@ -8,10 +8,12 @@ import {
   AutoIncrement,
   DataType,
   ForeignKey,
+  HasMany,
 } from 'sequelize-typescript';
 import GeneralAtributes from '../../dtos/general';
 import { Optional } from 'sequelize';
 import { Family, FamilyAtributes } from 'src/family/entities/family.entity';
+import { ProviderArticle } from 'src/provider-article/entities/provider-article.entity';
 
 export interface ArticleAtributes extends GeneralAtributes {
   id: number;
@@ -65,4 +67,6 @@ export class Article extends Model<
 
   @BelongsTo(() => Family)
   family: Family;
+  @HasMany(() => ProviderArticle)
+  provider_articles: ProviderArticle[];
 }

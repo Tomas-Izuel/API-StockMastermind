@@ -5,9 +5,8 @@ import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
 
 @Injectable()
 export class OrderStatusRepository {
-  constructor() {}
   async createOrderStatus(createOrderStatusDto: CreateOrderStatusDto) {
-    OrderStatus.create({
+    return OrderStatus.create({
       ...createOrderStatusDto,
       is_default: createOrderStatusDto.is_default || false,
     });
@@ -29,7 +28,7 @@ export class OrderStatusRepository {
     return OrderStatus.update(updateOrderStatusDto, { where: { id } });
   }
 
-  async delete(id: number) {
+  async remove(id: number) {
     return OrderStatus.destroy({ where: { id } });
   }
 }

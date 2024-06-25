@@ -9,6 +9,8 @@ import configuration from './config/configuration';
 import { ProviderModule } from './provider/provider.module';
 import { OrderStatusModule } from './order-status/order-status.module';
 import { databaseProviders } from './config/mysql/mysql';
+import { ProviderArticleService } from './provider-article/provider-article.service';
+import { ProviderArticleModule } from './provider-article/provider-article.module';
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import { databaseProviders } from './config/mysql/mysql';
     DatabaseModule,
     ProviderModule,
     OrderStatusModule,
+    ProviderArticleModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],
