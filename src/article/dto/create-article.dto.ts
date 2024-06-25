@@ -5,4 +5,5 @@ export interface CreateArticleDto {
   brand: string;
   storage_cost: number;
   family_id: number;
+  stock: number;
 }

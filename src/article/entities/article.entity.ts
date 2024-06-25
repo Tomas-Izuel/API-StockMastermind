@@ -22,6 +22,7 @@ export interface ArticleAtributes extends GeneralAtributes {
   storage_cost: number;
   family?: FamilyAtributes;
   family_id: number;
+  stock: number;
 }
 
 interface ArticleCreationAttributes
@@ -65,4 +66,7 @@ export class Article extends Model<
 
   @BelongsTo(() => Family)
   family: Family;
+
+  @Column(DataType.INTEGER)
+  stock: number;
 }
