@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { CreateDemandParamDto } from './dto/create-demand-param.dto';
 import { UpdateDemandParamDto } from './dto/update-demand-param.dto';

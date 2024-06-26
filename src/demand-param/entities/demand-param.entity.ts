@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import {
   Table,
@@ -23,7 +22,7 @@ interface DemandParamCreationAttributes
   > {}
 
 @Table({
-  tableName: 'demand params',
+  tableName: 'demand_params',
   timestamps: true,
   paranoid: true,
 })
@@ -36,6 +35,6 @@ export class DemandParam extends Model<
   @Column(DataType.INTEGER)
   id: number;
 
-  @Column(DataType.INTEGER)
+  @Column(DataType.FLOAT)
   error_aceptable: number;
 }

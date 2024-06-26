@@ -1,10 +1,9 @@
-/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
   Post,
   Body,
-  Patch,
+  Put,
   Param,
   Delete,
 } from '@nestjs/common';
@@ -31,7 +30,7 @@ export class DemandParamsController {
     return this.demandParamsService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @Param('id') id: number,
     @Body() updateDemandParamDto: UpdateDemandParamDto,
