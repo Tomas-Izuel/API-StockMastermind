@@ -9,13 +9,9 @@ import configuration from './config/configuration';
 import { ProviderModule } from './provider/provider.module';
 import { OrderStatusModule } from './order-status/order-status.module';
 import { databaseProviders } from './config/mysql/mysql';
-<<<<<<< HEAD
-import { ProviderArticleService } from './provider-article/provider-article.service';
 import { ProviderArticleModule } from './provider-article/provider-article.module';
-=======
 import { ClientModule } from './client/client.module';
 import { SaleModule } from './sale/sale.module';
->>>>>>> develop
 
 @Module({
   imports: [
@@ -23,14 +19,11 @@ import { SaleModule } from './sale/sale.module';
     FamilyModule,
     ArticleModule,
     DatabaseModule,
-<<<<<<< HEAD
     ProviderModule,
     OrderStatusModule,
     ProviderArticleModule,
-=======
     ClientModule,
     SaleModule,
->>>>>>> develop
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],
