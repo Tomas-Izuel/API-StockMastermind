@@ -4,7 +4,7 @@ import { FamilyRepository } from './family-repository';
 
 @Injectable()
 export class FamilyService {
-  familyRepository = new FamilyRepository();
+  constructor(private familyRepository: FamilyRepository) {}
   create(createFamilyDto: CreateFamilyDto) {
     return this.familyRepository.create(createFamilyDto);
   }
