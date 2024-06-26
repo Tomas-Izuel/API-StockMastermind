@@ -26,10 +26,7 @@ export class OrderService {
     const existingArticle = await this.articleService.findOne(
       createOrderDto.article_id,
     );
-    if (
-      existingArticle === 'article not found' ||
-      existingArticle.stock < createOrderDto.quantity
-    ) {
+    if (existingArticle === 'article not found') {
       throw new Error('Article not found or out of stock');
     }
 
