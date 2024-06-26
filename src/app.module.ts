@@ -12,8 +12,12 @@ import { databaseProviders } from './config/mysql/mysql';
 import { ProviderArticleModule } from './provider-article/provider-article.module';
 import { ClientModule } from './client/client.module';
 import { SaleModule } from './sale/sale.module';
+<<<<<<< HEAD
 import { OrderModule } from './order/order.module';
 
+=======
+import { DemandParamsModule } from './demand-param/demand-params.module';
+>>>>>>> develop
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
@@ -25,7 +29,11 @@ import { OrderModule } from './order/order.module';
     ProviderArticleModule,
     ClientModule,
     SaleModule,
+<<<<<<< HEAD
     OrderModule,
+=======
+    DemandParamsModule
+>>>>>>> develop
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],
