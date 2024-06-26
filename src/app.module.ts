@@ -6,8 +6,12 @@ import { ArticleModule } from './article/article.module';
 import { FamilyModule } from './family/family.module';
 import { DatabaseModule } from './database/database.module';
 import configuration from './config/configuration';
+import { ProviderModule } from './provider/provider.module';
+import { OrderStatusModule } from './order-status/order-status.module';
 import { databaseProviders } from './config/mysql/mysql';
-import { DemandParamsModule } from './demand-param/demand-params.module';
+import { ProviderArticleModule } from './provider-article/provider-article.module';
+import { ClientModule } from './client/client.module';
+import { SaleModule } from './sale/sale.module';
 
 @Module({
   imports: [
@@ -15,7 +19,11 @@ import { DemandParamsModule } from './demand-param/demand-params.module';
     FamilyModule,
     ArticleModule,
     DatabaseModule,
-    DemandParamsModule,
+    ProviderModule,
+    OrderStatusModule,
+    ProviderArticleModule,
+    ClientModule,
+    SaleModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],

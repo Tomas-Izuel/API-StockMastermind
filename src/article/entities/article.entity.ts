@@ -8,20 +8,27 @@ import {
   AutoIncrement,
   DataType,
   ForeignKey,
+  HasMany,
 } from 'sequelize-typescript';
 import GeneralAtributes from '../../dtos/general';
 import { Optional } from 'sequelize';
 import { Family, FamilyAtributes } from 'src/family/entities/family.entity';
+import { ProviderArticle } from 'src/provider-article/entities/provider-article.entity';
 
 export interface ArticleAtributes extends GeneralAtributes {
   id: number;
   name: string;
   model: string;
-  description: string;
   brand: string;
+  description: string;
   storage_cost: number;
+  stock: number;
+  price: number;
+  security_stock?: number;
+  max_stock?: number;
   family?: FamilyAtributes;
   family_id: number;
+  request_point?: number;
 }
 
 interface ArticleCreationAttributes
@@ -51,13 +58,28 @@ export class Article extends Model<
   model: string;
 
   @Column(DataType.STRING)
-  description: string;
+  brand: string;
 
   @Column(DataType.STRING)
-  brand: string;
+  description: string;
 
   @Column(DataType.FLOAT)
   storage_cost: number;
+
+  @Column(DataType.INTEGER)
+  stock: number;
+
+  @Column(DataType.FLOAT)
+  price: number;
+
+  @Column(DataType.INTEGER)
+  security_stock: number;
+
+  @Column(DataType.NUMBER)
+  max_stock: number;
+
+  @Column(DataType.INTEGER)
+  request_point: number;
 
   @ForeignKey(() => Family)
   @Column(DataType.INTEGER)
@@ -65,4 +87,6 @@ export class Article extends Model<
 
   @BelongsTo(() => Family)
   family: Family;
+  @HasMany(() => ProviderArticle)
+  provider_articles: ProviderArticle[];
 }
