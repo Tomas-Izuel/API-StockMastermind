@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { ArticleRepository } from './article-repository';
 import { CreateArticleDto } from './dto/create-article.dto';
+import { ArticleRepository } from './article-repository';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticleService {
-  articleRepository = new ArticleRepository();
+  constructor(private articleRepository: ArticleRepository) {}
 
   create(createArticleDto: CreateArticleDto) {
     return this.articleRepository.create(createArticleDto);
@@ -18,7 +19,7 @@ export class ArticleService {
     return this.articleRepository.findOne(id);
   }
 
-  update(id: number, updateArticleDto) {
+  update(id: number, updateArticleDto: UpdateArticleDto) {
     return this.articleRepository.update(id, updateArticleDto);
   }
 

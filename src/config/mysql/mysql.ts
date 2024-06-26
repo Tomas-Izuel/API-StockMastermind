@@ -1,10 +1,13 @@
 import { ConfigService } from '@nestjs/config';
 import { Sequelize } from 'sequelize-typescript';
 import { Article } from 'src/article/entities/article.entity';
+import { Client } from 'src/client/entities/client.entity';
 import { Family } from 'src/family/entities/family.entity';
 import { OrderStatus } from 'src/order-status/entities/order-status.entity';
 import { ProviderArticle } from 'src/provider-article/entities/provider-article.entity';
 import { Provider } from 'src/provider/entities/provider.entity';
+import { SaleArticle } from 'src/sale-article/entities/sale-article.entity';
+import { Sale } from 'src/sale/entities/sale.entity';
 
 export const databaseProviders = [
   {
@@ -21,6 +24,9 @@ export const databaseProviders = [
       sequelize.addModels([
         Article,
         Family,
+        Client,
+        Sale,
+        SaleArticle,
         OrderStatus,
         Provider,
         ProviderArticle,

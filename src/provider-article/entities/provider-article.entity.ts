@@ -43,12 +43,7 @@ export class ProviderArticle extends Model<
   id!: number;
   @Column(DataType.FLOAT)
   sale_price!: number;
-  @Column(DataType.INTEGER)
-  security_stock!: number;
-  @Column(DataType.INTEGER)
-  max_stock!: number;
-  @Column(DataType.INTEGER)
-  request_stock!: number;
+
   @ForeignKey(() => Provider)
   @Column(DataType.INTEGER)
   provider_id!: number;
