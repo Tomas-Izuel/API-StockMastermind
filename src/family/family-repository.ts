@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { CreateFamilyDto } from './dto/create-family.dto';
 import { Family } from './entities/family.entity';
