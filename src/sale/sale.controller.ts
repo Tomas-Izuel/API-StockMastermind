@@ -7,11 +7,11 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { SaleService } from './sale.service';
-import { CreateSaleDto } from './dto/create-sale.dto';
+import { CreateSaleDto } from './dto/create-sale-dto';
 
 @Controller('sale')
 export class SaleController {
-  constructor(private readonly saleService: SaleService) {}
+  constructor(private saleService: SaleService) {}
 
   @Post()
   create(@Body() createSaleDto: CreateSaleDto) {

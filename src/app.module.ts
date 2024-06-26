@@ -9,7 +9,6 @@ import configuration from './config/configuration';
 import { databaseProviders } from './config/mysql/mysql';
 import { ClientModule } from './client/client.module';
 import { SaleModule } from './sale/sale.module';
-import { SaleArticleModule } from './sale-article/sale-article.module';
 
 @Module({
   imports: [
@@ -19,7 +18,6 @@ import { SaleArticleModule } from './sale-article/sale-article.module';
     DatabaseModule,
     ClientModule,
     SaleModule,
-    SaleArticleModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],
