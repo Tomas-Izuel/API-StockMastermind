@@ -12,6 +12,7 @@ import {
   import GeneralAtributes from '../../dtos/general';
   import { Optional } from 'sequelize';
   import { DemandParam } from 'src/demand-param/entities/demand-param.entity';
+  import { Article } from 'src/article/entities/article.entity';
   
   export interface PredictedDemandAtributes extends GeneralAtributes {
     id: number;
@@ -20,7 +21,8 @@ import {
     price_proyected?: number;
     calculated_error?: number;
     selected?: boolean;
-    DemandParam_id?: number;
+    demandParam_id?: number;
+    article_id: number;
   }
   
   interface PredictedDemandCreationAttributes
@@ -64,4 +66,11 @@ import {
     
     @BelongsTo(() => DemandParam)
     demand_param: DemandParam;
+
+    @ForeignKey(() => Article)
+    @Column(DataType.INTEGER)
+    article_id: number;
+
+    @BelongsTo(() => Article)
+    article: Article;
   }
