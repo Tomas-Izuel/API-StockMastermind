@@ -9,6 +9,7 @@ import { Provider } from 'src/provider/entities/provider.entity';
 import { SaleArticle } from 'src/sale-article/entities/sale-article.entity';
 import { Sale } from 'src/sale/entities/sale.entity';
 import { DemandParam } from 'src/demand-param/entities/demand-param.entity';
+import { PredictedDemand } from 'src/predicted-demand/entities/predicted-demand.entity';
 
 export const databaseProviders = [
   {
@@ -32,6 +33,7 @@ export const databaseProviders = [
         Provider,
         ProviderArticle,
         DemandParam,
+        PredictedDemand
       ]);
       await sequelize.sync();
       return sequelize;

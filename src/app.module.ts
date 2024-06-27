@@ -13,6 +13,7 @@ import { ProviderArticleModule } from './provider-article/provider-article.modul
 import { ClientModule } from './client/client.module';
 import { SaleModule } from './sale/sale.module';
 import { DemandParamsModule } from './demand-param/demand-params.module';
+import { PredictedDemandModule } from './predicted-demand/predicted-demand.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
@@ -24,7 +25,8 @@ import { DemandParamsModule } from './demand-param/demand-params.module';
     ProviderArticleModule,
     ClientModule,
     SaleModule,
-    DemandParamsModule
+    DemandParamsModule,
+    PredictedDemandModule
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],

@@ -6,9 +6,11 @@ import {
   PrimaryKey,
   DataType,
   AutoIncrement,
+  HasMany,
 } from 'sequelize-typescript';
 import GeneralAtributes from '../../dtos/general';
 import { Optional } from 'sequelize';
+import { PredictedDemand } from 'src/predicted-demand/entities/predicted-demand.entity';
 
 export interface DemandParamAtributes extends GeneralAtributes {
   id: number;
@@ -37,4 +39,7 @@ export class DemandParam extends Model<
 
   @Column(DataType.FLOAT)
   error_aceptable: number;
+
+  @HasMany(() => PredictedDemand)
+  predicted_demand: PredictedDemand[];
 }
