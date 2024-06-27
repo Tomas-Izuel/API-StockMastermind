@@ -9,6 +9,6 @@ import { DemandParamsModule } from 'src/demand-param/demand-params.module';
   controllers: [PredictedDemandController],
   providers: [PredictedDemandService,PredictedDemandRepository],
   imports:[ArticleModule,DemandParamsModule],
-  
+  exports:[PredictedDemandService],
 })
 export class PredictedDemandModule {}
