@@ -11,8 +11,8 @@ import {
   } from 'sequelize-typescript';
   import GeneralAtributes from '../../dtos/general';
   import { Optional } from 'sequelize';
-  import { DemandParam } from 'src/demand-param/entities/demand-param.entity';
-  import { Article } from 'src/article/entities/article.entity';
+  import { DemandParam, DemandParamAtributes } from 'src/demand-param/entities/demand-param.entity';
+  import { Article, ArticleAtributes } from 'src/article/entities/article.entity';
   
   export interface PredictedDemandAtributes extends GeneralAtributes {
     id: number;
@@ -22,7 +22,9 @@ import {
     calculated_error?: number;
     selected?: boolean;
     demand_param_id: number;
+    demand_param?: DemandParamAtributes;
     article_id: number;
+    article?: ArticleAtributes;
   }
   
   interface PredictedDemandCreationAttributes
@@ -50,9 +52,6 @@ import {
 
     @Column(DataType.INTEGER)
     quantity: number;
-
-    @Column(DataType.FLOAT)
-    price_proyected: number;
 
     @Column(DataType.FLOAT)
     calculated_error: number;
