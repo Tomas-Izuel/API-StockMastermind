@@ -22,7 +22,7 @@ export class PredictedDemandService {
             throw new Error('Article not found');
         }
         const existDemandParam = await this.demandParam.findOne(
-            createPredictedDemandDTO.demandParam_id
+            createPredictedDemandDTO.demand_param_id
         );
         if(!existDemandParam){
             throw new Error('Demand params not found');
@@ -52,9 +52,9 @@ export class PredictedDemandService {
                 throw new Error('Article not found');
             }
         }
-        if(updatePredictedDemandDto.demandParam_id){
+        if(updatePredictedDemandDto.demand_param_id){
             const existDemandParam = await this.demandParam.findOne(
-                updatePredictedDemandDto.demandParam_id
+                updatePredictedDemandDto.demand_param_id
             );
             if(!existDemandParam){
                 throw new Error('Demand params not found');

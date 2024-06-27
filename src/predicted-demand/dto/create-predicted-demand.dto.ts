@@ -4,6 +4,6 @@ export interface CreatePredictedDemandDto {
     price_proyected: number;
     calculated_error: number;
     selected: boolean;
-    demandParam_id: number;
+    demand_param_id: number;
     article_id: number;
   }
