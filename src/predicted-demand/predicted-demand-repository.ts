@@ -29,9 +29,6 @@ export class PredictedDemandRepository{
             {model: Article}
           ]
         });
-        if (!predictedDemand) {
-          return 'article not found';
-        }
         return predictedDemand;
     }
 
