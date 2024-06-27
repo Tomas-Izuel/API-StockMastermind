@@ -41,4 +41,8 @@ export class OrderStatusService {
   async remove(id: number) {
     return this.orderStatusRepository.remove(id);
   }
+
+  async findDefault() {
+    return this.orderStatusRepository.findDefault();
+  }
 }

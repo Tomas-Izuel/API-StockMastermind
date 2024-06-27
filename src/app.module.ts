@@ -12,8 +12,10 @@ import { databaseProviders } from './config/mysql/mysql';
 import { ProviderArticleModule } from './provider-article/provider-article.module';
 import { ClientModule } from './client/client.module';
 import { SaleModule } from './sale/sale.module';
+import { OrderModule } from './order/order.module';
 import { DemandParamsModule } from './demand-param/demand-params.module';
 import { PredictedDemandModule } from './predicted-demand/predicted-demand.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
@@ -26,7 +28,8 @@ import { PredictedDemandModule } from './predicted-demand/predicted-demand.modul
     ClientModule,
     SaleModule,
     DemandParamsModule,
-    PredictedDemandModule
+    PredictedDemandModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],
