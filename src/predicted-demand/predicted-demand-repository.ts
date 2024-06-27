@@ -37,12 +37,9 @@ export class PredictedDemandRepository{
         return await this.findOne(id);
       }
     
-      async remove(id: number) {
+    async remove(id: number) {
         const predictedDemand = await PredictedDemand.findByPk(id, { include: { model: DemandParam } });
-        if (!predictedDemand) {
-          return 'Predicated demand not found';
-        }
         return await PredictedDemand.destroy({ where: { id } });
-      }
+    }
 
 }
