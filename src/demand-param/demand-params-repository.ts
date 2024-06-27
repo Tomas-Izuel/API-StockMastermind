@@ -16,9 +16,6 @@ export class DemandParamRepository{
 
   async findOne(id: number) {
     const demandparam = await DemandParam.findByPk(id);
-    if (!demandparam) {
-      return 'demand parameters not found';
-    }
     return demandparam;
   }
 

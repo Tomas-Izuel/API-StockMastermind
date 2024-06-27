@@ -14,6 +14,7 @@ import { ClientModule } from './client/client.module';
 import { SaleModule } from './sale/sale.module';
 import { OrderModule } from './order/order.module';
 import { DemandParamsModule } from './demand-param/demand-params.module';
+import { PredictedDemandModule } from './predicted-demand/predicted-demand.module';
 
 @Module({
   imports: [
@@ -26,8 +27,9 @@ import { DemandParamsModule } from './demand-param/demand-params.module';
     ProviderArticleModule,
     ClientModule,
     SaleModule,
-    OrderModule,
     DemandParamsModule,
+    PredictedDemandModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],

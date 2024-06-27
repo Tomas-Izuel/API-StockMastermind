@@ -6,5 +6,6 @@ import { DemandParamRepository } from './demand-params-repository';
 @Module({
   controllers: [DemandParamsController],
   providers: [DemandParamsService, DemandParamRepository],
+  exports: [DemandParamsService],
 })
 export class DemandParamsModule {}
