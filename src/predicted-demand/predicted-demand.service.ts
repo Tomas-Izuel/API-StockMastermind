@@ -4,6 +4,7 @@ import { CreatePredictedDemandDto } from './dto/create-predicted-demand.dto';
 import { UpdatePredictedDemandDto } from './dto/update-predicted-demand.dto';
 import { ArticleService } from 'src/article/article.service';
 import { DemandParamsService } from 'src/demand-param/demand-params.service';
+import { error } from 'console';
 
 @Injectable()
 export class PredictedDemandService {
@@ -39,7 +40,15 @@ export class PredictedDemandService {
         return this.predictedDemandRepository.findOne(id);
     }
 
-    async  update(id: number, updatePredictedDemandDto: UpdatePredictedDemandDto){
+    async findByArticleIdAndSelectedTrue(id: number){
+        const predicatedDemandByAritcleSelected = this.predictedDemandRepository.findByArticleIdAndSelected(id);
+        if(!predicatedDemandByAritcleSelected){
+            throw new Error("Predicted demand not found");
+        }
+        return predicatedDemandByAritcleSelected;
+    }
+
+    async update(id: number, updatePredictedDemandDto: UpdatePredictedDemandDto){
         const existPredictedDemand = await this.predictedDemandRepository.findOne(id);
         if (!existPredictedDemand) {
           return 'Predicated demand not found';

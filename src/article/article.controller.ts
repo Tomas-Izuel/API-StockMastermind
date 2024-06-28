@@ -11,6 +11,7 @@ import {
 import { ArticleService } from './article.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
+import { zip } from 'rxjs';
 
 @Controller('article')
 export class ArticleController {
@@ -42,5 +43,13 @@ export class ArticleController {
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.articleService.remove(id);
+  }
+
+  @Post("calcular-inventario/:id/:z")
+  calcularInventario(
+    @Param('id', ParseIntPipe) id: number,
+    @Param('z', ParseIntPipe) z: number
+  ){
+    return this.articleService.calcularInventario(id,z);
   }
 }

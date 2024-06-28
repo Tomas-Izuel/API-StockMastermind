@@ -5,5 +5,8 @@ export interface UpdateArticleDto {
   brand?: string;
   storage_cost?: number;
   family_id?: number;
-  stock: number;
+  stock?: number;
+  max_stock?: number;
+  security_stock?: number;
+  request_point?: number;
 }
