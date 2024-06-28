@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DemandParams } from './demand-params';
+import { DemandParamRepository } from './demand-params-repository';
 
 describe('DemandParams', () => {
-  let provider: DemandParams;
+  let provider: DemandParamRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [DemandParams],
+      providers: [DemandParamRepository],
     }).compile();
 
-    provider = module.get<DemandParams>(DemandParams);
+    provider = module.get<DemandParamRepository>(DemandParamRepository);
   });
 
   it('should be defined', () => {

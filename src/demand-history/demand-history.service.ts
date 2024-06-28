@@ -1,26 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDemandHistoryDto } from './dto/create-demand-history.dto';
 import { UpdateDemandHistoryDto } from './dto/update-demand-history.dto';
-
+import { DemandHistoryRepository } from './demand-history';
 @Injectable()
 export class DemandHistoryService {
+  constructor(private demandHistoryRepository: DemandHistoryRepository) {}
   create(createDemandHistoryDto: CreateDemandHistoryDto) {
-    return 'This action adds a new demandHistory';
+    return this.demandHistoryRepository.create(createDemandHistoryDto);
   }
 
   findAll() {
-    return `This action returns all demandHistory`;
+    return this.demandHistoryRepository.findAll();
+  }
+
+  getDemandHistoryByArticleId(article_id: number) {
+    return this.demandHistoryRepository.getDemandHistoryByArticleId(article_id);
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} demandHistory`;
+    return this.demandHistoryRepository.findOne(id);
   }
 
   update(id: number, updateDemandHistoryDto: UpdateDemandHistoryDto) {
-    return `This action updates a #${id} demandHistory`;
+    return this.demandHistoryRepository.update(id, updateDemandHistoryDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} demandHistory`;
+    return this.demandHistoryRepository.remove(id);
   }
 }

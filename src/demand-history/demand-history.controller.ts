@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { DemandHistoryService } from './demand-history.service';
 import { CreateDemandHistoryDto } from './dto/create-demand-history.dto';
 import { UpdateDemandHistoryDto } from './dto/update-demand-history.dto';
@@ -17,18 +26,28 @@ export class DemandHistoryController {
     return this.demandHistoryService.findAll();
   }
 
+  @Get('article/:article_id')
+  getDemandHistoryByArticleId(
+    @Param('article_id', ParseIntPipe) article_id: number,
+  ) {
+    return this.demandHistoryService.getDemandHistoryByArticleId(+article_id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.demandHistoryService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDemandHistoryDto: UpdateDemandHistoryDto) {
-    return this.demandHistoryService.update(+id, updateDemandHistoryDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateDemandHistoryDto: UpdateDemandHistoryDto,
+  ) {
+    return this.demandHistoryService.update(id, updateDemandHistoryDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.demandHistoryService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.demandHistoryService.remove(id);
   }
 }
