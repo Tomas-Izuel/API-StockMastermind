@@ -1,6 +1,6 @@
 import { PromedioMovil } from './Children/PromedioMovil';
 import { PromedioMovilPonderado } from './Children/PromedioMovilPonderado';
-import { PromedioPonderadoExponencial } from './Children/PromedioPonderadoExponencial';
+import { PromedioMovilPonderadoSuavizadoExponencialmente } from './Children/PromedioPonderadoExponencial';
 
 export enum DemandNames {
   PROMEDIO_MOVIL = 'PromedioMovil',
@@ -15,7 +15,7 @@ export const factoryDemand = (name: DemandNames) => {
     case DemandNames.PROMEDIO_PONDERADO:
       return new PromedioMovilPonderado();
     case DemandNames.PROMEDIO_PONDERADO_EXPONENCIAL:
-      return new PromedioPonderadoExponencial();
+      return new PromedioMovilPonderadoSuavizadoExponencialmente();
     default:
       throw new Error('Demand not found');
   }

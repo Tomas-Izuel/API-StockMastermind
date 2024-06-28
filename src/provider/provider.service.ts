@@ -12,6 +12,10 @@ export class ProviderService {
     private providerArticleService: ProviderArticleService,
   ) {}
 
+  default() {
+    return this.providerRepository.findDefault();
+  }
+
   create(createProviderDto: CreateProviderDto) {
     return this.providerRepository.createProvider(createProviderDto);
   }

@@ -16,7 +16,7 @@ export class ArticleRepository {
   async findOne(id: number) {
     const article = await Article.findByPk(id, { include: { model: Family } });
     if (!article) {
-      return 'article not found';
+      throw new Error('article not found');
     }
     return article;
   }

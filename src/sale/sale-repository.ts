@@ -3,11 +3,11 @@ import { Sale } from './entities/sale.entity';
 import { SaleArticle } from '../sale-article/entities/sale-article.entity';
 import { Article } from 'src/article/entities/article.entity';
 import { CreateSaleDto } from './dto/create-sale-dto';
-import { SaleService } from './sale.service';
+import { OrderService } from 'src/order/order.service';
 
 @Injectable()
 export class SaleRepository {
-  constructor(private saleService: SaleService) {}
+  constructor(private orderService: OrderService) {}
   async create(createSaleDto: CreateSaleDto) {
     const articleIds = createSaleDto.articles.map(
       (article) => article.article_id,
@@ -38,16 +38,12 @@ export class SaleRepository {
       await article.update({ stock });
       if (stock <= article.dataValues.request_point) {
         const quantity = article.dataValues.max_stock - stock;
-        await this.saleService.create({
-          date: new Date(),
-          client_id: createSaleDto.client_id,
-          articles: [
-            {
-              article_id: article.id,
-              quantity,
-              price: article.dataValues.price,
-            },
-          ],
+        await this.orderService.create({
+          quantity,
+          subtotal: article.dataValues.price * quantity,
+          total: article.dataValues.price * quantity,
+          provider_id: 1,
+          article_id: article.id,
         });
       }
     }

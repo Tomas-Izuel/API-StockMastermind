@@ -10,5 +10,6 @@ import { ArticleModule } from 'src/article/article.module';
   controllers: [OrderController],
   providers: [OrderService, OrderRepository],
   imports: [OrderStatusModule, ProviderModule, ArticleModule],
+  exports: [OrderService],
 })
 export class OrderModule {}

@@ -26,7 +26,7 @@ export class OrderService {
     const existingArticle = await this.articleService.findOne(
       createOrderDto.article_id,
     );
-    if (existingArticle === 'article not found') {
+    if (!existingArticle) {
       throw new Error('Article not found or out of stock');
     }
 
@@ -58,7 +58,7 @@ export class OrderService {
       existingOrder.article_id,
     );
 
-    if (articleOrder === 'article not found') {
+    if (!articleOrder) {
       throw new Error('Article not found');
     }
 
@@ -84,7 +84,7 @@ export class OrderService {
 
   async updateArticleWhenOrderIsDone(id: number, quantity: number) {
     const existingArticle = await this.articleService.findOne(id);
-    if (existingArticle === 'article not found') {
+    if (!existingArticle) {
       throw new Error('Article not found');
     }
 

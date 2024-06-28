@@ -16,6 +16,8 @@ import { OrderModule } from './order/order.module';
 import { DemandParamsModule } from './demand-param/demand-params.module';
 import { PredictedDemandModule } from './predicted-demand/predicted-demand.module';
 import { DemandHistoryModule } from './demand-history/demand-history.module';
+import { DemandModule } from './demand/demand.module';
+import { ErrorModule } from './error/error.module';
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import { DemandHistoryModule } from './demand-history/demand-history.module';
     PredictedDemandModule,
     OrderModule,
     DemandHistoryModule,
+    DemandModule,
+    ErrorModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],
