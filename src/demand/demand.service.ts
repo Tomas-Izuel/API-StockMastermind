@@ -6,6 +6,7 @@ import { CalculateErrorParams } from './interfaces';
 import { DemandHistory } from 'src/demand-history/entities/demand-history.entity';
 import { ProviderService } from 'src/provider/provider.service';
 import { ArticleService } from 'src/article/article.service';
+import { Article } from 'src/article/entities/article.entity';
 
 @Injectable()
 export class DemandService {
@@ -27,6 +28,18 @@ export class DemandService {
     return standardDeviation;
   }
 
+  async getCGI(article: Article, demand: number, lot_optimum: number) {
+    const supplier = await this.supplierService.default();
+    const shipping_cost = supplier.dataValues.shipping_cost;
+    const storage_cost = article.storage_cost;
+    const price = article.dataValues.price;
+    const cgi =
+      (price * demand) +
+      (storage_cost * lot_optimum) / 2 +
+      (shipping_cost * demand) / lot_optimum;
+    return cgi;
+  }
+
   async calculateSafetyStock(article_id: number): Promise<number> {
     const supplier = await this.supplierService.default();
     const leadTime = supplier.dataValues.shipping_time;
@@ -39,7 +52,7 @@ export class DemandService {
   async calculateOrderPoint(demand: number): Promise<number> {
     const supplier = await this.supplierService.default();
     const leadTime = supplier.dataValues.shipping_time;
-    const orderPoint = demand/4 * leadTime;
+    const orderPoint = (demand / 4) * leadTime;
     return Math.ceil(orderPoint);
   }
 

@@ -28,6 +28,7 @@ export class DemandController {
     lot_optimum: number;
     standard_deviation: number;
     max_stock: number;
+    cgi: number;
   }> {
     const params: CalculateDemandParams = {
       periods: parseInt(periods, 10),
@@ -84,9 +85,14 @@ export class DemandController {
     const article = await this.articleService.findOne(params.article_id);
     const max_stock = await this.demandService.maxStock(standard_deviation);
     await article.update({ security_stock, request_point, max_stock });
+    const cgi = await this.demandService.getCGI(
+      article,
+      bestResult.demand,
+      lot_optimum,
+    );
     if (article.dataValues.stock <= request_point) {
       const quantity = max_stock - article.dataValues.stock;
-      console.log(quantity)
+      console.log(quantity);
       await this.orderService.create({
         quantity,
         subtotal: article.dataValues.price * quantity,
@@ -104,6 +110,7 @@ export class DemandController {
       lot_optimum,
       standard_deviation: standard_deviation,
       max_stock,
+      cgi,
     };
   }
 }
