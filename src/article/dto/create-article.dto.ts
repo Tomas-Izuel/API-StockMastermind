@@ -7,7 +7,4 @@ export interface CreateArticleDto {
   family_id: number;
   stock: number;
   price: number;
-  max_stock: number;
-  security_stock: number;
-  request_point: number;
 }
