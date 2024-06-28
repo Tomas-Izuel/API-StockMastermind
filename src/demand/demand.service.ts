@@ -135,7 +135,7 @@ export class DemandService {
         currentDate.getFullYear(),
         currentDate.getMonth() - i,
         28,
-      ); // Día fijo 28
+      );
       const period = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, '0')}-${date
