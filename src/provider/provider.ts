@@ -34,6 +34,17 @@ export class ProviderRepository {
     });
   }
 
+  async findByArticleId(id: number) {
+    return await Provider.findOne({
+      where: { is_default: true },
+      include: [{
+        model: ProviderArticle,
+        where: { article_id: id },
+      }],
+    });
+    }
+  
+
   async findDefault() {
     return Provider.findOne({
       where: { is_default: true },

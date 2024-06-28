@@ -24,6 +24,10 @@ export class ProviderService {
     return this.providerRepository.findOne(id);
   }
 
+  findByArticleId(id: number) {
+    return this.providerRepository.findByArticleId(id);
+  }
+
   update(id: number, updateProviderDto: UpdateProviderDto) {
     return this.providerRepository.update(id, updateProviderDto);
   }
