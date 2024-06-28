@@ -15,6 +15,7 @@ import { SaleModule } from './sale/sale.module';
 import { OrderModule } from './order/order.module';
 import { DemandParamsModule } from './demand-param/demand-params.module';
 import { PredictedDemandModule } from './predicted-demand/predicted-demand.module';
+import { DemandHistoryModule } from './demand-history/demand-history.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { PredictedDemandModule } from './predicted-demand/predicted-demand.modul
     DemandParamsModule,
     PredictedDemandModule,
     OrderModule,
+    DemandHistoryModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...databaseProviders],
