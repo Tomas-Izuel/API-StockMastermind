@@ -100,6 +100,8 @@ export class DemandController {
         provider_id: 1,
         article_id: article.dataValues.id,
       });
+      const stock_update = article.dataValues.stock + lot_optimum;
+      await article.update({ stock: stock_update });
     }
     return {
       demand_predicted: bestResult.demand,
