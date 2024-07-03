@@ -38,6 +38,10 @@ export class OrderService {
     });
   }
 
+  async updateStock(id: number,quantity: number, order_id: number) {
+    return await this.orderRepository.updateStock(id,quantity,order_id);
+  }
+
   findAll() {
     return this.orderRepository.findAll();
   }

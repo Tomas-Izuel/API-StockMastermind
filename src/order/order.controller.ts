@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Put,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -41,6 +42,12 @@ export class OrderController {
     return this.orderService.update(+id, {
       status_id: +status_id,
     });
+  }
+
+  @Put('update-stock/:id')
+  async updateStatusQuantity(@Param('id', ParseIntPipe) id: number,@Body() quantity, @Body() order_id) {
+    const order = await this.orderService.updateStock(id,quantity.quantity,order_id);
+    return order;
   }
 
   @Delete(':id')

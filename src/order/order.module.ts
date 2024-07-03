@@ -5,6 +5,7 @@ import { OrderRepository } from './order';
 import { OrderStatusModule } from 'src/order-status/order-status.module';
 import { ProviderModule } from 'src/provider/provider.module';
 import { ArticleModule } from 'src/article/article.module';
+import { ArticleRepository } from 'src/article/article-repository';
 
 @Module({
   controllers: [OrderController],

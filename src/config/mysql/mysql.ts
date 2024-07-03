@@ -24,6 +24,7 @@ export const databaseProviders = [
         username: configService.get('MYSQLUSER'),
         password: configService.get('MYSQLPASSWORD'),
         database: configService.get('MYSQLDATABASE'),
+        logging: false
       });
       sequelize.addModels([
         Article,
