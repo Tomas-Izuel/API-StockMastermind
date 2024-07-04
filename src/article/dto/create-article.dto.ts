@@ -1,3 +1,5 @@
+//Definimos los atributos necesarios para crear un artículo.
+//Las interfaces de typescript son como definir un nuevo tipo de dato.
 export interface CreateArticleDto {
   name: string;
   model: string;

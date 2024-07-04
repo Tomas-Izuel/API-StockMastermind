@@ -16,6 +16,8 @@ import { Family, FamilyAtributes } from 'src/family/entities/family.entity';
 import { ProviderArticle } from 'src/provider-article/entities/provider-article.entity';
 import { PredictedDemand } from 'src/predicted-demand/entities/predicted-demand.entity';
 
+//Definimos los atributos necesarios para crear un artículo.
+
 export interface ArticleAtributes extends GeneralAtributes {
   id: number;
   name: string;
@@ -37,6 +39,8 @@ interface ArticleCreationAttributes
     ArticleAtributes,
     'id' | 'created_at' | 'updated_at' | 'deleted_at'
   > {}
+
+//Definimos la entidad artículo.
 
 @Table({
   tableName: 'article',
@@ -88,11 +92,10 @@ export class Article extends Model<
 
   @BelongsTo(() => Family)
   family: Family;
-  
+
   @HasMany(() => ProviderArticle)
   provider_articles: ProviderArticle[];
 
   @HasMany(() => PredictedDemand)
   predictedDemand: PredictedDemand[];
-
 }

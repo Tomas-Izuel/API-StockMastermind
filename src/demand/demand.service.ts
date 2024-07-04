@@ -8,12 +8,16 @@ import { ProviderService } from 'src/provider/provider.service';
 import { ArticleService } from 'src/article/article.service';
 import { Article } from 'src/article/entities/article.entity';
 
+// En este archivo definimos el servicio de demanda.
+
 @Injectable()
 export class DemandService {
   constructor(
     private readonly supplierService: ProviderService,
     private articleService: ArticleService,
   ) {}
+
+  // Definimos el método calculateStandardDeviation que recibe un id de artículo y retorna un número.
   async calculateStandardDeviation(article_id: number): Promise<number> {
     const historicalDemand = await this.getHistoricalDemandArticle(article_id);
     const mean =
@@ -28,6 +32,7 @@ export class DemandService {
     return standardDeviation;
   }
 
+  // Definimos el método getCGI que recibe un objeto de tipo Article, un número y un número, y retorna un número.
   async getCGI(article: Article, demand: number, lot_optimum: number) {
     const supplier = await this.supplierService.default();
     const shipping_cost = supplier.dataValues.shipping_cost;
@@ -40,6 +45,7 @@ export class DemandService {
     return cgi;
   }
 
+  // Definimos el método calculateSafetyStock que recibe un número y retorna un número.
   async calculateSafetyStock(article_id: number): Promise<number> {
     const supplier = await this.supplierService.default();
     const leadTime = supplier.dataValues.shipping_time;
@@ -49,6 +55,7 @@ export class DemandService {
     return roundedSafetyStock;
   }
 
+  // Definimos el método calculateOrderPoint que recibe un número y retorna un número.
   async calculateOrderPoint(demand: number): Promise<number> {
     const supplier = await this.supplierService.default();
     const leadTime = supplier.dataValues.shipping_time;
@@ -56,6 +63,7 @@ export class DemandService {
     return Math.ceil(orderPoint);
   }
 
+  // Definimos el método maxStock que recibe un número y retorna
   async maxStock(standar_desviation: number): Promise<number> {
     const supplier = await this.supplierService.default();
     const shipping_time = supplier.dataValues.shipping_time;
@@ -63,6 +71,7 @@ export class DemandService {
     return Math.ceil(max_stock);
   }
 
+  // Definimos el método calculateOptimumLot que recibe un número y un número, y retorna un número
   async calculateOptimumLot(
     demand: number,
     article_id: number,
@@ -79,6 +88,7 @@ export class DemandService {
     return Math.ceil(optimumLot);
   }
 
+  // Definimos el método getHistoricalDemandArticle que recibe un número y retorna un array de números
   private async getHistoricalDemandArticle(
     article_id: number,
   ): Promise<number[]> {
@@ -96,6 +106,7 @@ export class DemandService {
     return historicalDemand;
   }
 
+  // Definimos el método Calculate que recibe un objeto de tipo CalculateDemandParams y un DemandNames, y retorna un objeto
   async Calculate(
     params: CalculateDemandParams,
     method: DemandNames,
@@ -116,6 +127,7 @@ export class DemandService {
     return { demand: predictedDemand, errors };
   }
 
+  // Definimos el método calculateErrors que recibe un objeto de tipo CalculateErrorParams y retorna un objeto
   private async calculateErrors(
     params: CalculateErrorParams,
   ): Promise<Record<string, number>> {
@@ -136,6 +148,7 @@ export class DemandService {
     return errors;
   }
 
+  // Definimos el método getHistoricalDemand que recibe un número y un número, y retorna un array de números
   private async getHistoricalDemand(
     article_id: number,
     periods: number,

@@ -6,6 +6,8 @@ import { ProviderService } from 'src/provider/provider.service';
 import { ArticleService } from 'src/article/article.service';
 import { OrderService } from 'src/order/order.service';
 
+// En este archivo definimos el controlador de demanda.
+
 @Controller('demand')
 export class DemandController {
   constructor(
@@ -14,6 +16,7 @@ export class DemandController {
     private orderService: OrderService,
   ) {}
 
+  // Definimos el método calculateDemand que recibe un objeto de tipo CalculateDemandParams y retorna un objeto con varios atributos.
   @Get('calculate')
   async calculateDemand(
     @Query('periods') periods: string,

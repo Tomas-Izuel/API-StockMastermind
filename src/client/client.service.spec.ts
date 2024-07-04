@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ClientService } from './client.service';
 
+// En este archivo se importan las dependencias necesarias para realizar las pruebas unitarias.
+
 describe('ClientService', () => {
   let service: ClientService;
 

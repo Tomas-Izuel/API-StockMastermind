@@ -1,3 +1,5 @@
+// Exportamos las variables de entorno necesarias para la conexión a la base de datos.
+
 export default () => ({
   port: parseInt(process.env.PORT, 10) || 3000,
   MYSQLDATABASE: process.env.MYSQL_DATABASE,

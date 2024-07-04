@@ -11,6 +11,8 @@ import GeneralAtributes from '../../dtos/general';
 import { Optional } from 'sequelize';
 import { Sale } from 'src/sale/entities/sale.entity';
 
+//Definimos los atributos necesarios para crear un cliente.
+
 export interface ClientAtributes extends GeneralAtributes {
   cuit: number;
   name: string;
@@ -27,6 +29,8 @@ interface ClientCreationAttributes
   timestamps: true,
   paranoid: true,
 })
+
+//Definimos la entidad cliente.
 export class Client extends Model<ClientAtributes, ClientCreationAttributes> {
   @PrimaryKey
   @Column(DataType.INTEGER)

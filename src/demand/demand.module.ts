@@ -6,6 +6,8 @@ import { ProviderModule } from 'src/provider/provider.module';
 import { ArticleModule } from 'src/article/article.module';
 import { OrderModule } from 'src/order/order.module';
 
+// En este archivo definimos el módulo de demanda.
+
 @Module({
   providers: [DemandService],
   exports: [DemandService],

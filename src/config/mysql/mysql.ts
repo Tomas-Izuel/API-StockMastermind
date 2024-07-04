@@ -13,6 +13,7 @@ import { DemandParam } from 'src/demand-param/entities/demand-param.entity';
 import { PredictedDemand } from 'src/predicted-demand/entities/predicted-demand.entity';
 import { DemandHistory } from 'src/demand-history/entities/demand-history.entity';
 
+// En este archivo realizamos la configuracion de la base de datos MySQL.
 export const databaseProviders = [
   {
     provide: 'SEQUELIZE',

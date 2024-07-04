@@ -2,11 +2,14 @@ import { DemandHistory } from 'src/demand-history/entities/demand-history.entity
 import { Demand } from '../demand';
 import { CalculateDemandParams } from '../interfaces';
 
+// En este archivo definimos la clase PromedioMovilPonderado que extiende de la clase Demand.
+
 export class PromedioMovilPonderadoSuavizadoExponencialmente extends Demand {
   constructor() {
     super('PromedioMovilPonderadoSuavizadoExponencialmente');
   }
 
+  // Definimos el método Calculate que recibe un objeto de tipo CalculateDemandParams y retorna un número
   async Calculate(params: CalculateDemandParams): Promise<number> {
     const historicalDemand = await this.getHistoricalDemand(
       params.article_id,
@@ -23,6 +26,7 @@ export class PromedioMovilPonderadoSuavizadoExponencialmente extends Demand {
     return weightedAverage;
   }
 
+  // Definimos el método getHistoricalDemand que recibe un id de artículo y un número de períodos, y retorna un array de números
   private async getHistoricalDemand(
     article_id: number,
     periods: number,
@@ -35,7 +39,7 @@ export class PromedioMovilPonderadoSuavizadoExponencialmente extends Demand {
         currentDate.getFullYear(),
         currentDate.getMonth() - i,
         28,
-      ); // Día fijo 28
+      );
       const period = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, '0')}-${date

@@ -8,6 +8,8 @@ export enum DemandNames {
   PROMEDIO_PONDERADO_EXPONENCIAL = 'PromedioPonderadoExponencial',
 }
 
+// En este archivo definimos la función factoryDemand que recibe un nombre de demanda y retorna una instancia de la demanda correspondiente.
+
 export const factoryDemand = (name: DemandNames) => {
   switch (name) {
     case DemandNames.PROMEDIO_MOVIL:

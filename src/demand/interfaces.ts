@@ -1,3 +1,4 @@
+
 export interface CalculateDemandParams{
   periods: number;
   article_id: number;
